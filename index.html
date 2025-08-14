@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chameleon Web</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="Logo" style="height:60px; vertical-align:middle;">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Clientes</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+    <button class="btn-proyecto">Comenzar Proyecto</button>
+</header>
+
+<div class="hero">
+    <div class="hero-text">
+        <h1>Transforma tu entorno digital</h1>
+        <p>Creamos experiencias digitales que posicionan tu marca, atraen clientes y generan resultados desde el día uno.</p>
+        <button class="btn-soluciones">Explorar Soluciones</button>
+    </div>
+    <div class="planet">
+        <!-- Aquí puedes poner tu GIF en lugar del PNG -->
+        <img src="logo.png" alt="Logo Camaleón" class="planet-logo">
+    </div>
+</div>
+
+<section id="servicios" class="services">
+
+    <h2>Nuestros planes</h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <img src="icono1.png" alt="emprendedores">
+            <h3>Plan emprendedores</h3>
+            <p>Empieza a tener presencia en la web.</p>
+        </div>
+        <div class="service-card">
+            <img src="icono2.png" alt="Tiendas Online">
+            <h3>Tiendas Online</h3>
+            <p>Implementación de e-commerce seguros y fáciles de usar.</p>
+        </div>
+        <div class="service-card">
+            <img src="icono3.png" alt="Tienda online digital">
+            <h3>Tienda Online producto digital</h3>
+            <p>Vende tus cursos, libros etc en un solo lugar.</p>
+        </div>
+        <div class="service-card">
+            <img src="icono4.png" alt="desarrollo web">
+            <h3>Desarrollo web</h3>
+            <p>Diseño y desarrollo de páginas web modernas y optimizadas.</p>
+        </div>
+        <div class="service-card">
+            <img src="icono1.png" alt="emprendedores">
+            <h3>Plan emprendedores</h3>
+            <p>Empieza a tener presencia en la web.</p>
+        </div>
+        <div class="service-card">
+            <img src="icono2.png" alt="Tiendas Online">
+            <h3>Tiendas Online</h3>
+            <p>Implementación de e-commerce seguros y fáciles de usar.</p>
+        </div>
+        <div class="service-card">
+            <img src="icono3.png" alt="Tienda online digital">
+            <h3>Tienda Online producto digital</h3>
+            <p>Vende tus cursos, libros etc en un solo lugar.</p>
+        </div>
+        <div class="service-card">
+            <img src="icono4.png" alt="desarrollo web">
+            <h3>Desarrollo web</h3>
+            <p>Diseño y desarrollo de páginas web modernas y optimizadas.</p>
+        </div>
+    </div>
+
+</section>
+
+
+<canvas id="particles"></canvas>
+
+<script>
+    // Partículas en Canvas
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+
+    for (let i = 0; i < 80; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 2,
+            dx: (Math.random() - 0.5) * 0.5,
+            dy: (Math.random() - 0.5) * 0.5
+        });
+    }
+
+    function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#00ff66";
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+
+            p.x += p.dx;
+            p.y += p.dy;
+
+            if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        });
+        requestAnimationFrame(drawParticles);
+    }
+
+    drawParticles();
+
+    window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+</script>
+
+</body>
+</html>
