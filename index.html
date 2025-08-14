@@ -260,6 +260,92 @@
         </div>
     </div>
 </section>
+<!--*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-->
+<!-- CHAMELEON STEVEN UX -->
+<!-- Camaleón -->
+<div id="chameleon-spy">
+    <img src="Camaleon.gif" alt="Camaleón" />
+</div>
+
+<script>
+const chameleon = document.getElementById("chameleon-spy");
+const img = chameleon.querySelector("img");
+
+function randomPosition() {
+    const sides = ["left", "right", "top", "bottom"];
+    const side = sides[Math.floor(Math.random() * sides.length)];
+    let x = 0, y = 0;
+
+    // Limpia todas las clases de dirección
+    chameleon.classList.remove("left", "right", "top", "bottom");
+
+    chameleon.style.transform = "none";
+
+    switch (side) {
+        case "left":
+            y = Math.random() * window.innerHeight;
+            chameleon.style.left = "-120px";
+            chameleon.style.top = `${y}px`;
+            chameleon.classList.add("left");
+            break;
+        case "right":
+            y = Math.random() * window.innerHeight;
+            chameleon.style.left = `${window.innerWidth}px`;
+            chameleon.style.top = `${y}px`;
+            chameleon.classList.add("right");
+            break;
+        case "top":
+            x = Math.random() * window.innerWidth;
+            chameleon.style.left = `${x}px`;
+            chameleon.style.top = "-120px";
+            chameleon.classList.add("top");
+            break;
+        case "bottom":
+            x = Math.random() * window.innerWidth;
+            chameleon.style.left = `${x}px`;
+            chameleon.style.top = `${window.innerHeight}px`;
+            chameleon.classList.add("bottom");
+            break;
+    }
+
+    return side;
+}
+
+function showChameleon() {
+    const side = randomPosition();
+    setTimeout(() => {
+        chameleon.classList.add("show");
+
+        // Animar hacia dentro
+        if (side === "left") {
+            chameleon.style.transform = "translateX(120px)";
+        } else if (side === "right") {
+            chameleon.style.transform = "translateX(-120px)";
+        } else if (side === "top") {
+            chameleon.style.transform = "translateY(120px)";
+        } else if (side === "bottom") {
+            chameleon.style.transform = "translateY(-120px)";
+        }
+
+        // Ocultar después de 4.5s
+        setTimeout(() => {
+            chameleon.classList.remove("show", "left", "right", "top", "bottom");
+            chameleon.style.transform = "none";
+        }, 4500);
+
+    }, 200);
+}
+
+function loopChameleon() {
+    showChameleon();
+    const nextTime = Math.random() * 5000 + 5000; // entre 5 y 10 seg
+    setTimeout(loopChameleon, nextTime);
+}
+
+loopChameleon();
+
+</script>
+<!--*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-->
 
 <section id="clientes" class="clientes">
     <div class="clientes-container">
