@@ -185,3 +185,50 @@ canvas {
     gap: 10px;
   }
 }
+
+/*+-+-+-++-+-+-+-+-+-+-+-+*/
+/*UX STEVEN CHAMELEON*/
+/* CAMALEÓN ESPÍA */
+#chameleon-spy {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    transition: transform 0.8s ease;
+    opacity: 0;
+}
+
+#chameleon-spy img {
+    width: 120px;
+    height: auto;
+    animation: blink 4s infinite, eye-move 3s infinite;
+    --chameleon-orient: none;
+    transform: var(--chameleon-orient) translate(0, 0);
+}
+
+#chameleon-spy.left img,
+#chameleon-spy.top img,
+#chameleon-spy.bottom img {
+    --chameleon-orient: rotateY(180deg);
+}
+
+#chameleon-spy.right img {
+    --chameleon-orient: none;
+}
+
+/* Movimiento de ojos simulado (imagen entera se mueve un poquito) */
+@keyframes eye-move {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(2px, -1px); }
+  50% { transform: translate(-2px, 1px); }
+  75% { transform: translate(1px, 2px); }
+}
+
+/* Estados de aparición */
+#chameleon-spy.show {
+    opacity: 1;
+}
+
+.camaleon {
+    transition: transform 0.3s ease;
+}
+/*+-+-+-++-+-+-+-+-+-+-+-+*/
